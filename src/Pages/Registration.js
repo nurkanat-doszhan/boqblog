@@ -18,18 +18,17 @@ const Login = () => {
     }
     return (
         <div className="container">
-            <h1 className="mt-5 mb-4">Регистрация</h1>
-            <div className="row">
-                <div className="col-md-6">
-                    <form>
+            <h1 className="my-5 text-center">Регистрация</h1>
+            <div className="row d-flex justify-content-center">
+                <div className="col-md-4 d-flex align-items-center">
+                    <form className="w-100">
                         <div className="mb-3">
                             <label htmlFor="login" className="form-label">Author name</label>
-                            <input required type="text" onChange={e => setUserData({...userData, login: e.target.value})} className="form-control" id="login" />
+                            <input required type="text" onChange={e => setUserData({...userData, login: e.target.value})} className="form-control w-100" id="login" />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="email" className="form-label">Email address</label>
-                            <input required type="email" onChange={e => setUserData({...userData, email: e.target.value})} className="form-control" id="email" aria-describedby="emailHelp" />
-                            <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
+                            <input required type="email" onChange={e => setUserData({...userData, email: e.target.value})} className="form-control w-100" id="email" aria-describedby="emailHelp" />
                         </div>
                         <div className="mb-3">
                             <label htmlFor="passs" className="form-label">Password</label>
@@ -52,7 +51,7 @@ const Login = () => {
                         } type="button" className="btn btn-success" onClick={() => submit()}>Зарегистрироваться</button>
                     </form>
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-4">
                     <img src="tree.png" width="350" alt="" />
                 </div>
             </div>
