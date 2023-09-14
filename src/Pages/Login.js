@@ -1,9 +1,21 @@
+import { useState } from "react";
+
 const Login = () => {
     const [userData, setUserData] = useState({email: '', pass: ''});
-    
+    const [errorAlert, setErrorAlert] = useState(false)
+    const [successAlert, setSuccessAlert] = useState(false)
     const login = () => {
-        if(localStorage.getItem('nurkanat.doszhan@gmail.com')) {
-            
+        let mail = localStorage.getItem(userData.email).split(',')[1];
+        // console.log(localStorage.getItem(userData.email))
+        if (mail == null) {
+            setSuccessAlert(false)
+            setErrorAlert(true)
+        } else if (mail == userData.email) {
+            setErrorAlert(false)
+            setSuccessAlert(true)
+        } else {
+            setSuccessAlert(false)
+            setErrorAlert(true)
         }
     }
     return (
@@ -20,7 +32,21 @@ const Login = () => {
                             <label htmlFor="exampleInputPassword1" className="form-label">Password</label>
                             <input type="password" onChange={e => setUserData({...userData, pass: e.target.value})} className="form-control w-100" id="exampleInputPassword1" />
                         </div>
-                        <button type="submit" className="btn btn-success" onClick={() => login()}>Войти</button>
+                        {
+                            errorAlert &&
+                            <div className="alert alert-danger" role="alert">
+                                Пользователь с таким email уже существует.
+                            </div>
+                        }
+                        {
+                            successAlert &&
+                            <div className="alert alert-success" role="alert">
+                                Вы успешно зарегистрировались.
+                            </div>
+                        }
+                        <button disabled={
+                            userData.email == '' || userData.login == '' || userData.pass == '' ? true : false
+                        } type="button" className="btn btn-success" onClick={() => login()}>Войти</button>
                     </form>
                 </div>
                 <div className="col-md-4">
