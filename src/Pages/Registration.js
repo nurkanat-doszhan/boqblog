@@ -9,8 +9,8 @@ const Login = () => {
         if (localStorage.getItem(userData.email) == null) {
             setErrorAlert(false)
             setSuccessAlert(true)
-            let obj = { login: userData.login, email: userData.email, pass: userData.pass }
-            localStorage.setItem(obj.email, [obj.login, obj.email, obj.pass]);
+            let obj = { login: userData.login, email: userData.email, pass: userData.pass, isLogin: false }
+            localStorage.setItem(obj.email, [obj.login, obj.email, obj.pass, obj.isLogin]);
         } else {
             setSuccessAlert(false)
             setErrorAlert(true)

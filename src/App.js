@@ -4,6 +4,7 @@ import Home from './Pages/Home';
 import Login from './Pages/Login';
 import Registration from './Pages/Registration';
 import Navbar from './Components/Navbar';
+import { useState } from 'react';
 
 function App() {
   return (
@@ -11,9 +12,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/registration" element={<Registration />} />
-          {/* <Route path="*" element={<NoPage />} /> */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/registration" element={<Registration />} />
+        {/* <Route path="*" element={<NoPage />} /> */}
         {/* </Route> */}
       </Routes>
     </div>
