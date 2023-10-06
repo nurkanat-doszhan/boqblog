@@ -1,9 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Login = (props) => {
   const [userData, setUserData] = useState({ email: '', pass: '' });
   const [errorAlert, setErrorAlert] = useState(false)
   const [successAlert, setSuccessAlert] = useState(false)
+  const navigate = useNavigate();
+  
   const login = () => {
     let mail = localStorage.getItem(userData.email);
     // If wrong email or password
@@ -13,11 +16,13 @@ const Login = () => {
     } else if (mail.split(',')[1] == userData.email && mail.split(',')[2] == userData.pass) {
       setSuccessAlert(true)
       setErrorAlert(false)
-      console.log(mail.split(','));
-      console.log(mail.split(',')[3]);
-      localStorage.getItem(mail, 'vjaisi');
-      console.log(mail.split(','));
-      
+      let newData = `${mail.split(',')[0]},${mail.split(',')[1]},${mail.split(',')[2]},${true}`
+      localStorage.setItem(userData.email, newData)
+      // console.log(newData)
+      props.userData(newData)
+      setTimeout(() => {
+        navigate("/cabinet")
+      }, 1000);
     }
   }
   return (
